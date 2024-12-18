@@ -1,0 +1,96 @@
+/* 전체 스타일(main, sub) */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f0f0f0; /* 배경색 추가 */
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+}
+
+section {
+    padding: 20px 10%;
+}
+
+#popular-posts, #categories {
+    background-color: white; /* 배경색 변경 */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.category {
+    flex: 1;
+    background-color: #ddd;
+    padding: 20px;
+    border-radius: 8px; /* 둥근 모서리 */
+    text-align: center;
+    min-width: 250px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s; /* 부드러운 전환 효과 */
+}
+
+.category:hover {
+    background-color: #ccc;
+}
+
+.category h3 {
+    margin-top: 0;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed; /* 고정 푸터 */
+    width: 100%;
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    header, section {
+        padding: 20px;
+    }
+
+    .category-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}

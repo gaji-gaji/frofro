@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 커뮤니티</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.search-bar {
+    margin-top: 10px;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+.post-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.post {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: calc(33% - 40px);
+    box-sizing: border-box;
+}
+
+.post h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #4CAF50;
+}
+
+.new-post,
+.chat-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.new-post input,
+.new-post textarea,
+.new-post button,
+.chat-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.new-post button,
+#sendChatButton {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.new-post button:hover,
+#sendChatButton:hover {
+    background-color: #45a049;
+}
+
+.chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>책 커뮤니티</h1>
+        <nav>
+            <a href="main.html">메인 사이트</a>
+            <a href="market.html">마켓</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="bookSearchQuery" placeholder="검색어를 입력하세요">
+            <button id="searchButton">검색</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="post-list">
+            <h2>게시물 목록</h2>
+            <div id="post-list-container" class="post-list">
+                <!-- 자바스크립트를 통해 게시물 추가 -->
+            </div>
+        </section>
+
+        <section id="new-post">
+            <h2>새 게시물 작성</h2>
+            <div class="new-post">
+                <form id="postForm">
+                    <input type="text" id="post-title" placeholder="제목" required>
+                    <textarea id="post-content" placeholder="내용" required></textarea>
+                    <input type="file" id="post-image" accept="image/*">
+                    <button type="submit">작성하기</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="chat">
+            <h2>1대1 채팅</h2>
+            <div>
+                <label for="chat-username">상대방 닉네임:</label>
+                <input type="text" id="chat-username" placeholder="상대방 닉네임" required>
+                <button type="button" id="startChatButton">채팅 시작</button>
+            </div>
+
+            <div id="chat-container" class="chat-container" style="display:none;">
+                <div id="chat-box" class="chat-box">
+                    <!-- 채팅 메시지가 표시됩니다 -->
+                </div>
+                <textarea id="chat-message" class="chat-input" placeholder="메시지를 입력하세요" required></textarea>
+                <button type="button" id="sendChatButton">전송</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 커뮤니티 사이트. All Rights Reserved.</p>
+    </footer>
+
+    <script src="book.js"></script>
+</body>
+</html>

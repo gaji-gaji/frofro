@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마켓켓 웹사이트</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="market.js" defer></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    .main-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    .container {
+      flex: 2;
+      margin-right: 20px;
+    }
+
+    .postDetailsContainer {
+      flex: 1;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #4CAF50;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+
+    input, textarea, button {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    input[type="text"], input[type="number"], textarea, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #45A049;
+    }
+
+    .post-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .post-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.3s ease-in-out;
+    }
+
+    .post-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .post-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .post-item button {
+      padding: 8px 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .post-item button:hover {
+      background-color: #0056b3;
+    }
+
+    .post-details img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 300px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-messages {
+      overflow-y: auto;
+      height: 250px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+
+    .chat-input {
+      display: flex;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    .chat-input button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #45A049;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-container">
+    <!-- 게시글 작성 및 목록 -->
+    <div class="container">
+      <h1>마켓 웹사이트</h1>
+      <header>
+        <a href="main.html">메인 사이트로 돌아가기</a>
+      </header>
+      <h2>판매 게시글 작성</h2>
+      <div>
+        <label for="itemTitle">상품 제목: </label>
+        <input type="text" id="itemTitle" placeholder="상품 제목을 입력하세요" required><br><br>
+        <label for="itemPrice">가격: </label>
+        <input type="number" id="itemPrice" placeholder="가격을 입력하세요" required><br><br>
+        <label for="itemDescription">상품 설명: </label><br>
+        <textarea id="itemDescription" placeholder="상품에 대한 설명을 입력하세요" required></textarea><br><br>
+        <label for="itemImage">상품 이미지: </label>
+        <input type="file" id="itemImage" accept="image/*" required><br><br>
+        <button id="postButton">게시글 등록</button>
+      </div>
+      
+      <h2>판매 게시글 목록</h2>
+      <ul class="post-list" id="postList">
+        <!-- 게시글 목록이 동적으로 추가됩니다. -->
+      </ul>
+    </div>
+
+    <!-- 게시글 상세보기 및 채팅 -->
+    <div class="postDetailsContainer" id="postDetailsContainer" style="display:none;">
+      <h2>상품 상세보기</h2>
+      <div id="postDetails" class="post-details"></div>
+
+      <!-- 1대1 채팅 -->
+      <div class="chat-container" id="chatContainer" style="display:none;">
+        <div class="chat-messages" id="chatMessages">
+          <!-- 채팅 메시지가 여기에 표시됩니다. -->
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chatMessage" placeholder="메시지를 입력하세요">
+          <button id="sendMessageBtn">보내기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const postList = document.getElementById('postList');
+const postDetailsContainer = document.getElementById('postDetailsContainer');
+const postDetails = document.getElementById('postDetails');
+const chatContainer = document.getElementById('chatContainer');
+const chatMessages = document.getElementById('chatMessages');
+const chatMessage = document.getElementById('chatMessage');
+const sendMessageBtn = document.getElementById('sendMessageBtn');
+
+let posts = [];
+let currentPost = null;
+
+// 게시글 등록
+document.getElementById('postButton').addEventListener('click', () => {
+  const title = document.getElementById('itemTitle').value;
+  const price = document.getElementById('itemPrice').value;
+  const description = document.getElementById('itemDescription').value;
+  const imageInput = document.getElementById('itemImage');
+
+  if (title && price && description && imageInput.files.length > 0) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const newPost = {
+        title,
+        price,
+        description,
+        image: e.target.result,
+        id: Date.now() // 고유 id 생성
+      };
+      posts.push(newPost);
+      renderPostList();
+
+      // 입력 필드 초기화
+      document.getElementById('itemTitle').value = '';
+      document.getElementById('itemPrice').value = '';
+      document.getElementById('itemDescription').value = '';
+      imageInput.value = '';
+    };
+    reader.readAsDataURL(imageInput.files[0]); // 파일을 읽어서 이미지 URL로 변환
+  } else {
+    alert("모든 필드를 채워주세요.");
+  }
+});
+
+// 게시글 목록 렌더링
+function renderPostList() {
+  postList.innerHTML = '';
+  posts.forEach(post => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('post-item');
+    listItem.innerHTML = `
+      <img src="${post.image}" alt="상품 이미지">
+      <div>
+        <h3>${post.title}</h3>
+        <p>${post.price}원</p>
+      </div>
+      <button onclick="viewPostDetails(${post.id})">상세보기</button>
+    `;
+    postList.appendChild(listItem);
+  });
+}
+
+// 게시글 상세보기 표시
+function viewPostDetails(postId) {
+  currentPost = posts.find(post => post.id === postId);
+  if (currentPost) {
+    postDetails.innerHTML = `
+      <img src="${currentPost.image}" alt="상품 이미지">
+      <h3>${currentPost.title}</h3>
+      <p>가격: ${currentPost.price}원</p>
+      <p>${currentPost.description}</p>
+    `;
+
+    postDetailsContainer.style.display = 'block';
+    chatContainer.style.display = 'flex'; // 채팅 UI 표시
+    chatMessages.innerHTML = ''; // 기존 채팅 기록 초기화
+  }
+}
+
+// 메시지 보내기
+function sendMessage() {
+  const message = chatMessage.value.trim();
+  if (message) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    chatMessages.appendChild(messageElement);
+    chatMessage.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight; // 스크롤 아래로 이동
+  }
+}
+
+// 버튼 클릭으로 메시지 보내기
+sendMessageBtn.addEventListener('click', sendMessage);
+
+// Enter 키로 메시지 보내기
+chatMessage.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 Enter 동작 방지
+    sendMessage();
+  }
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 메인 사이트</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.category-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.category {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="main.html">커뮤니티 사이트</a></h1>
+        <nav>
+            <a href="music.html">음악</a>
+            <a href="game.html">게임</a>
+            <a href="book.html">책</a>
+            <a href="market.html">마켓</a>
+        </nav>
+        <div id="auth-container">
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="이메일" required>
+                <input type="password" id="loginPassword" placeholder="비밀번호" required>
+                <button type="submit">로그인</button>
+            </form>
+            <form id="registerForm" style="margin-top: 10px;">
+                <input type="email" id="registerEmail" placeholder="이메일" required>
+                <input type="password" id="registerPassword" placeholder="비밀번호" required>
+                <button type="submit">회원가입</button>
+            </form>
+        </div>
+        <div id="search-bar">
+            <input type="text" id="searchQuery" placeholder="검색어를 입력하세요">
+            <button id="searchButton">검색</button>
+        </div>
+    </header>
+
+    <section id="popular-posts">
+        <h2>인기 게시물</h2>
+        <div class="post-list" id="popularPostsContainer">
+            <!-- 자바스크립트를 통해 인기 게시물 추가 -->
+        </div>
+    </section>
+
+    <section id="categories">
+        <h2>카테고리</h2>
+        <div class="category-list">
+            <a href="music.html">
+                <div class="category">
+                    <h3>음악 커뮤니티</h3>
+                    <p>음악 관련 주제를 토론해보세요.</p>
+                </div>
+            </a>
+            <a href="game.html">
+                <div class="category">
+                    <h3>게임 커뮤니티</h3>
+                    <p>게임에 대해 이야기해보세요.</p>
+                </div>
+            </a>
+            <a href="book.html">
+                <div class="category">
+                    <h3>책 커뮤니티</h3>
+                    <p>책에 대한 다양한 의견을 공유하세요.</p>
+                </div>
+            </a>
+            <a href="market.html">
+                <div class="category">
+                    <h3>마켓</h3>
+                    <p>물건을 사고 팔고 교환하세요.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 커뮤니티 사이트. All Rights Reserved.</p>
+    </footer>
+
+    <script src="auth.js" defer></script>
+    <script src="main.js" defer></script>
+</body>
+</html>
